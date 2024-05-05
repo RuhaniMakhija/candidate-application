@@ -1,0 +1,125 @@
+.jobCardConatiner{
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    max-width: 360px;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px 0px;
+    overflow: hidden;
+    color: rgba(0, 0, 0, 0.87);
+    scroll-behavior: smooth;
+    scroll-margin-top: 90px;
+    box-sizing: inherit;
+    padding: 8px 16px;
+}
+.logo{
+    width: 25px;
+    height: 2.5rem;
+    max-width: 100%;
+}
+.job-details{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.text-details{
+    display: flex;
+    flex-direction: column;
+}
+.company-name{
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    color: #8b8b8b;
+}
+.job-role{
+    font-size: 14px;
+    line-height: 1.5;
+    margin-top: -1px;
+    font-weight: 400;
+}
+
+.job-location{
+    margin-bottom: 0px;
+    ont-size: 11px;
+    font-weight: 500;
+    margin-top: -5px;
+    font-size: 11px;
+}
+.job-salary{
+    font-size: 14px ;
+    font-weight: 500;
+    margin: 8px 0 ;
+    color: rgb(77, 89, 106);
+    line-height: 1.43;
+}
+.about-comapny{
+
+    margin: 0px;
+
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.about-us{
+    white-space: pre-wrap;
+    font-size: 14px;
+    margin: 0px;
+    font-weight: 400;
+}
+.min-exp-heading{
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    color: #8b8b8b;
+}
+
+.min-exp{
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.company-info{
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: 400;
+}
+
+.easy-apply{
+    width: 100%;
+    background-color: rgb(85, 239, 196);
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    padding: 8px 18px;
+    margin: 5px 0;
+    -webkit-tap-highlight-color: transparent;
+    cursor:pointer;
+    border: 0px;
+    outline: 0px;
+    border-radius: 8px;
+    line-height: 1.75;
+    min-width: 64px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-size: 16px;
+}
+
+.refferal-ask{
+    width: 100%;
+    background-color: rgb(73, 67, 218);
+    font-weight: 500;
+    color: #fff;
+    text-transform: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    margin: 5px 0;
+    border: 0px;
+    outline: 0px;
+    font-size: 16px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    line-height: 1.75;
+    min-width: 64px;
+}
