@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import JobCard from '../JobCard/JobCard';
+import "./jobListing.css"
 
 const JobListing = () => {
+    const [jobListings, setJobListings] = useState([]);
     useEffect(()=>{
         const fetchJobListings = async (offset) => {
 
@@ -11,7 +13,7 @@ const JobListing = () => {
       
               const body = JSON.stringify({
                 "limit": 10,
-                "offset": offset
+                "offset": 0
               });
       
               const requestOptions = {
@@ -22,7 +24,7 @@ const JobListing = () => {
       
               const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
               const jsonData = await response.json();
-            
+              setJobListings((prevJobListing)=>[...prevJobListing,...jsonData?.jdList]);
               
               console.log(jsonData);
             } catch (error) {
@@ -33,8 +35,10 @@ const JobListing = () => {
           fetchJobListings();
     },[])
   return (
-    <div>
-      <JobCard/>
+    <div className='job-listing-container'>
+       {jobListings.map((job, index) => (
+        <JobCard key={index} job={job} />
+      ))}
     </div>
   )
 }

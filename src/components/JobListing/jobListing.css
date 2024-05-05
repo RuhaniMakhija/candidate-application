@@ -1,0 +1,22 @@
+.job-listing-container{
+    display: flex;
+
+    margin-left: auto;
+    margin-right: auto;
+    flex-flow: wrap;
+
+    width: calc(100% + 24px);
+    padding-left: 24px;
+    padding-top: 24px;
+    flex-basis: 100%;
+    max-width: 100%;
+    gap: 45px;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
