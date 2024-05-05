@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import JobCard from '../JobCard/JobCard';
 import "./jobListing.css"
+import Shimmer from '../ShimmerUI/Shimmer';
 
 const JobListing = () => {
     const [jobListings, setJobListings] = useState([]);
     const [offset,setOffset]=useState(0);
-
+    const [showShimmer,setShowShimmer]=useState(false);
     //fetehced  api data
     const fetchJobListings = async (offset) => {
+        setShowShimmer(true);
         try {
             const myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
@@ -25,6 +27,7 @@ const JobListing = () => {
     
             const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
             const jsonData = await response.json();
+            setShowShimmer(false);
             setJobListings((prevJobListing)=>[...prevJobListing,...jsonData?.jdList]);
         } catch (error) {
             console.error(error);
@@ -52,12 +55,14 @@ const JobListing = () => {
         fetchJobListings(offset);
       },[offset])
 
-      
+
   return (
     <div className='job-listing-container'>
        {jobListings.map((job, index) => (
         <JobCard key={index} job={job} />
       ))}
+
+      { showShimmer && <Shimmer/>}
     </div>
   )
 }
