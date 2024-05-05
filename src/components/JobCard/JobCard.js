@@ -2,6 +2,10 @@ import React from 'react';
 import "./jobCard.css"
 
 const JobCard = () => {
+    const limitedString = (str, limit) => {
+        return str?.length < limit ? str : str?.slice(0, limit)+"...";
+      };
+      const para="Flex Wash is an operating system for the car wash industry. Our solutions help owners manage their operations and grow revenue. Our POS has a built-in CRM, allowing car washes to take advantage of their customer transaction history in order to funnel customers into subscriptions and higher margin wash packagesFlex Wash is an operating system for the car wash industry. Our solutions help owners manage their operations and grow revenue.Our POS has a built-in CRM, allowing car washes to take advantage of their customer transaction history in order to funnel customers into subscriptions and higher margin wash packages"
   return (
     <div className="jobCardConatiner">
     <div className='job-details'>
@@ -21,10 +25,10 @@ const JobCard = () => {
     <div>
         <p className='about-comapny'>About Company: </p>
         <p className='about-us'><strong>About us</strong></p>
-        <p className='company-info'>Flex Wash is an operating system for the car wash industry. Our solutions help owners manage their operations and grow revenue. 
-
-Our POS has a built-in CRM, allowing car washes to take advantage of their customer transaction history in order to funnel customers into subscriptions and higher margin wash packages</p>
+        <p className='company-info'>{limitedString(para,450)}
+        </p>
     </div>
+    {para?.length>450 && <button className='view-job'>View Job</button>}
     <div>
         <h3 className='min-exp-heading'>Minimum Experience</h3>
         <h2 className='min-exp'>5 years</h2>
