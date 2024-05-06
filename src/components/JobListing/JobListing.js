@@ -9,6 +9,7 @@ import { addJobs } from '../../utils/jobListingSlice';
 const JobListing = () => {
     const dispatch=useDispatch()
     const jobListings = useSelector(store=>store.jobs.items);
+    const roles = useSelector(state => state.roles.items.map(role => role.toLowerCase())); // Convert roles to lowercase
     const [offset,setOffset]=useState(0);
     const [showShimmer,setShowShimmer]=useState(false);
     //fetehced  api data
@@ -34,7 +35,7 @@ const JobListing = () => {
             dispatch(addJobs(jsonData.jdList));
             setShowShimmer(false);
             
-           
+           //added to redux store
             dispatch(addJobs(jobListings));
         } catch (error) {
             console.error(error);
@@ -62,10 +63,14 @@ const JobListing = () => {
         fetchJobListings(offset);
       },[offset])
 
-
+      const filteredJobListings = roles.length > 0
+    ? jobListings.filter(job => job?.jobRole && roles.includes(job.jobRole.toLowerCase())) // Check for null and undefined
+    : jobListings;
+    console.log("roles:", roles);
+    console.log("Filtered Job Listings:", filteredJobListings);
   return (
     <div className='job-listing-container'>
-       {jobListings.map((job, index) => (
+       {filteredJobListings.map((job, index) => (
         <JobCard key={index} job={job} />
       ))}
 
