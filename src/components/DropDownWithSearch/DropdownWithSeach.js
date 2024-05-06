@@ -1,30 +1,58 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import "./dropdownWithSearch.css"
-import Chip from '@mui/material/Chip';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
+import {useDispatch} from "react-redux"
 import { FormControl, IconButton } from '@mui/material';
 import CancelIcon from '../../images/CancelIcon';
+import { addRoles, removeRoles } from '../../utils/rolesSlice';
 
 
 
 const DropdownWithSeach = ({items,inputName}) => {
-   
- 
+
+      const dispatch=useDispatch()
+      const rolesSelected=useSelector((store)=>store.roles.items);
+      const prevValueRef = useRef([]);
       const [value, setValue] = useState([]);
       const [options, setOptions] = useState(items);
 
       const handleRemoveTag = (index) => {
-        const updatedOptions = [...options];
-        updatedOptions.push(value[index]); // Add back the removed option
-        setOptions(updatedOptions.filter(option => option !== value[index])); // Remove the selected option from the options array
-        const updatedValue = [...value];
-        updatedValue.splice(index, 1);
+        const removedValue = value[index]; 
+        const updatedValue = value.filter((_, i) => i !== index); 
+        console.log("removedvalue",removedValue)
+
+        if(inputName==="Roles"){
+          dispatch(removeRoles(removedValue.title))
+        }
+       
+        
+     
         setValue(updatedValue);
-    };
+        setOptions(prevOptions => {
+            if (!prevOptions.includes(removedValue)) {
+                return [...prevOptions, removedValue];
+            }
+            return prevOptions;
+        });
+      };
+    
       console.log("value",value)
+      const handleChange = (event, newValue) => {
+        
+        if(inputName==="Roles"){
+          newValue.forEach(item => {
+            if (!rolesSelected.includes(item.title)) {
+              dispatch(addRoles(item.title));
+          }
+          });
+        }
+          
+   
+        prevValueRef.current = newValue;
+          setValue(newValue);
+      };
 
 
   return (
@@ -39,7 +67,7 @@ const DropdownWithSeach = ({items,inputName}) => {
         options={options}
         getOptionLabel={(option) => option.title}
         value={value}
-        onChange={(event, newValue) => setValue(newValue)}
+        onChange={handleChange}
         renderTags={(value, getTagProps) =>
         value.map((option, index) => (
             <div key={index} className="MuiButtonBase-root MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-deletable MuiChip-deletableColorDefault MuiChip-filledDefault MuiAutocomplete-tag MuiAutocomplete-tagSizeSmall css-38raov-MuiButtonBase-root-MuiChip-root" tabindex="-1" role="button" data-tag-index={index} style={{borderRadius: '2px', display:"flex"}}>
