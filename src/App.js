@@ -1,11 +1,10 @@
 import React from 'react'
-import JobCard from './components/JobCard/JobCard'
-import JobListing from './components/JobListing/JobListing'
+import JobSearchPage from './components/JobSearchPage/JobSearchPage'
 
 const App = () => {
   return (
     <div>
-      <JobListing/>
+      <JobSearchPage/>
     </div>
   )
 }
