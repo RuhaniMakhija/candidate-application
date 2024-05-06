@@ -11,6 +11,7 @@ const JobListing = () => {
     const jobListings = useSelector(store=>store.jobs.items);
     const companyName = useSelector(state => state.companyName.companyName);
     const location = useSelector(state => state.locationName.locationName);
+    const minExperience = useSelector(state => state.experience);
     const roles = useSelector(state => state.roles.items.map(role => role.toLowerCase())); // Convert roles to lowercase
     const [offset,setOffset]=useState(0);
     const [showShimmer,setShowShimmer]=useState(false);
@@ -77,15 +78,21 @@ const JobListing = () => {
     const filterByLocationName = (job) => {
         return location === '' || job.location.toLowerCase().includes(location.toLowerCase());
     };
+    const filterByMinExperience = (job) => {
+        if (minExperience === null) {
+            return true; 
+        }
+        if (job.minExp === null) {
+            return false; 
+        }
+        return job.minExp >= minExperience;
+    };
 
-    const filteredJobListings = jobListings.filter(job => filterByRoles(job) && filterByCompanyName(job) && filterByLocationName(job));
+    const filteredJobListings = jobListings.filter(job => filterByRoles(job) && filterByCompanyName(job) && filterByLocationName(job) && filterByMinExperience(job));
 
 
-    //   const filteredJobListings = roles.length > 0
-    // ? jobListings.filter(job => job?.jobRole && roles.includes(job.jobRole.toLowerCase())) // Check for null and undefined
-    // : jobListings;
-    console.log("roles:", roles);
-    console.log("Filtered Job Listings:", filteredJobListings);
+   
+   
   return (
     <div className='job-listing-container'>
        {filteredJobListings.map((job, index) => (
