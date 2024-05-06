@@ -102,9 +102,6 @@ const JobListing = () => {
 
     const filteredJobListings = jobListings.filter(job => filterByRoles(job) && filterByCompanyName(job) && filterByLocationName(job) && filterByMinExperience(job) && filterByMinBasePay(job));
 
-
-   
-   
   return (
     <div className='job-listing-container'>
        {filteredJobListings.map((job, index) => (

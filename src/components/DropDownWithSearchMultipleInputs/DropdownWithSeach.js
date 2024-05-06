@@ -21,7 +21,6 @@ const DropdownWithSearch = ({items,inputName}) => {
       const handleRemoveTag = (index) => {
         const removedValue = value[index]; 
         const updatedValue = value.filter((_, i) => i !== index); 
-        console.log("removedvalue",removedValue)
 
         if(inputName==="Roles"){
           dispatch(removeRoles(removedValue.title))
@@ -38,7 +37,6 @@ const DropdownWithSearch = ({items,inputName}) => {
         });
       };
     
-      console.log("value",value)
       const handleChange = (event, newValue) => {
         
         if(inputName==="Roles"){

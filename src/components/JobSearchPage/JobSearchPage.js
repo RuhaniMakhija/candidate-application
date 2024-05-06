@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
+
 import "./jobSearchPage.css"
 
 import JobListing from '../JobListing/JobListing';
