@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import "./jobSearchPage.css"
 import DropdownWithSeach from '../DropDownWithSearch/DropdownWithSeach';
 import JobListing from '../JobListing/JobListing';
-import SaerchCompany from '../SearchCompany/SearchCompany';
+
+import SearchCompany from '../SearchCompany/SearchCompany';
 
 
 const JobSearchPage = () => {
@@ -26,7 +27,8 @@ const JobSearchPage = () => {
             <DropdownWithSeach items={remote} inputName="Remote"/>
             <DropdownWithSeach items={remote} inputName="Remote"/>
             <DropdownWithSeach items={salary} inputName="Min Base Pay Salary"/>
-            <SaerchCompany/>
+            <SearchCompany title="Search Company Name"/>
+            <SearchCompany title="Search Location"/>
         </div>
         <JobListing/>
 

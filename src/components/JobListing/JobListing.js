@@ -10,6 +10,7 @@ const JobListing = () => {
     const dispatch=useDispatch()
     const jobListings = useSelector(store=>store.jobs.items);
     const companyName = useSelector(state => state.companyName.companyName);
+    const location = useSelector(state => state.locationName.locationName);
     const roles = useSelector(state => state.roles.items.map(role => role.toLowerCase())); // Convert roles to lowercase
     const [offset,setOffset]=useState(0);
     const [showShimmer,setShowShimmer]=useState(false);
@@ -73,7 +74,11 @@ const JobListing = () => {
         return companyName === '' || job.companyName.toLowerCase().includes(companyName.toLowerCase());
     };
 
-    const filteredJobListings = jobListings.filter(job => filterByRoles(job) && filterByCompanyName(job));
+    const filterByLocationName = (job) => {
+        return location === '' || job.location.toLowerCase().includes(location.toLowerCase());
+    };
+
+    const filteredJobListings = jobListings.filter(job => filterByRoles(job) && filterByCompanyName(job) && filterByLocationName(job));
 
 
     //   const filteredJobListings = roles.length > 0
