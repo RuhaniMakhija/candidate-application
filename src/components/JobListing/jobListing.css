@@ -20,3 +20,14 @@
     align-items:center;
     justify-content: center;
 }
+
+.not-found{
+    width: 300px;
+    height: 300px;
+}
+.not-found-para{
+    margin: 20px 0px 0px;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 700;
+}

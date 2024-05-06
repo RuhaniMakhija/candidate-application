@@ -5,6 +5,7 @@ import "./jobListing.css"
 import Shimmer from '../ShimmerUI/Shimmer';
 import {useDispatch} from "react-redux"
 import { addJobs } from '../../utils/jobListingSlice';
+import { isEmpty } from '../../utils/EmptyCheck';
 
 const JobListing = () => {
     const dispatch=useDispatch()
@@ -109,6 +110,12 @@ const JobListing = () => {
        {filteredJobListings.map((job, index) => (
         <JobCard key={index} job={job} />
       ))}
+
+      {isEmpty(filteredJobListings) &&
+       <div className='not-found-container'> 
+            <img src="https://jobs.weekday.works/_next/static/media/nothing-found.4d8f334c.png" alt='Not found' className='not-found'/>
+            <p className='not-found-para'>No Jobs available for this category at the moment</p>
+       </div>}
 
       { showShimmer && <Shimmer/>}
     </div>

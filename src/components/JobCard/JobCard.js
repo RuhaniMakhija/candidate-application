@@ -38,12 +38,12 @@ const JobCard = ({job}) => {
             </p>
         </div>
         {job?.jobDetailsFromCompany?.length>450 && <button className='view-job'  onClick={redirectToLink}>View Job</button>}
-       {job?.minExp && <div>
+       <div>
             <h3 className='min-exp-heading'>Minimum Experience</h3>
-            <h2 className='min-exp'>{job?.minExp} years</h2>
-        </div>}
+            <h2 className='min-exp'>{job?.minExp} {!job?.minExp && "----"} {job?.minExp && "years"}</h2>
+        </div>
         <button className='easy-apply' onClick={redirectToLink}>⚡ Easy Apply</button>
-        <button className='refferal-ask'  onClick={redirectToLink}> <img src={avatar} alt='profile' className='profile'/>Unlock referral asks</button>
+        <button className='refferal-ask' > <img src={avatar} alt='profile' className='profile'/>Unlock referral asks</button>
         </div>
     )
 }
