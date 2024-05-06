@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import JobCard from '../JobCard/JobCard';
+import { useSelector } from 'react-redux';
 import "./jobListing.css"
 import Shimmer from '../ShimmerUI/Shimmer';
+import {useDispatch} from "react-redux"
+import { addJobs } from '../../utils/jobListingSlice';
 
 const JobListing = () => {
-    const [jobListings, setJobListings] = useState([]);
+    const dispatch=useDispatch()
+    const jobListings = useSelector(store=>store.jobs.items);
     const [offset,setOffset]=useState(0);
     const [showShimmer,setShowShimmer]=useState(false);
     //fetehced  api data
@@ -27,8 +31,11 @@ const JobListing = () => {
     
             const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
             const jsonData = await response.json();
+            dispatch(addJobs(jsonData.jdList));
             setShowShimmer(false);
-            setJobListings((prevJobListing)=>[...prevJobListing,...jsonData?.jdList]);
+            
+           
+            dispatch(addJobs(jobListings));
         } catch (error) {
             console.error(error);
         }
