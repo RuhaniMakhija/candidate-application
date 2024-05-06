@@ -12,6 +12,7 @@ const JobSearchPage = () => {
     const remote =[{ title: "Remote" }, { title: "Hybrid" }, { title: "In-office" }];
     const salary =[{ title: "0L" }, { title: "3L" }, { title: "6L" }];
     const rolesSelected=useSelector((store)=>store.roles.items);
+   
     console.log("rolesSelectedrolesSelected",rolesSelected)
 
   return (

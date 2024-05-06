@@ -9,6 +9,7 @@ import { addJobs } from '../../utils/jobListingSlice';
 const JobListing = () => {
     const dispatch=useDispatch()
     const jobListings = useSelector(store=>store.jobs.items);
+    const companyName = useSelector(state => state.companyName.companyName);
     const roles = useSelector(state => state.roles.items.map(role => role.toLowerCase())); // Convert roles to lowercase
     const [offset,setOffset]=useState(0);
     const [showShimmer,setShowShimmer]=useState(false);
@@ -63,9 +64,21 @@ const JobListing = () => {
         fetchJobListings(offset);
       },[offset])
 
-      const filteredJobListings = roles.length > 0
-    ? jobListings.filter(job => job?.jobRole && roles.includes(job.jobRole.toLowerCase())) // Check for null and undefined
-    : jobListings;
+
+    const filterByRoles = (job) => {
+        return roles.length === 0 || roles.includes(job.jobRole.toLowerCase());
+    };
+
+    const filterByCompanyName = (job) => {
+        return companyName === '' || job.companyName.toLowerCase().includes(companyName.toLowerCase());
+    };
+
+    const filteredJobListings = jobListings.filter(job => filterByRoles(job) && filterByCompanyName(job));
+
+
+    //   const filteredJobListings = roles.length > 0
+    // ? jobListings.filter(job => job?.jobRole && roles.includes(job.jobRole.toLowerCase())) // Check for null and undefined
+    // : jobListings;
     console.log("roles:", roles);
     console.log("Filtered Job Listings:", filteredJobListings);
   return (
