@@ -10,7 +10,7 @@ git clone <repository_url>
 2. Install Dependencies:
 Navigate into the project directory and install the required dependencies by running:
 
-npm start
+npm install
 
 3. Start the Project:
 After the dependencies are installed successfully, you can start the project by running:
