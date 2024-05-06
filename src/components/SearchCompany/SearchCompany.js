@@ -23,13 +23,14 @@ const SearchCompany = ({title}) => {
       <div className="MuiFormControl-root MuiTextField-root css-11avutt">
         <TextField
           id={title}
-          label={title} // Assuming you want to include a label for the TextField
+          label={title}
           placeholder={title}
           variant="outlined"
           className="MuiInputBase-input MuiOutlinedInput-input css-1x5jdmq"
           value={companyName}
           onChange={handleCompanyNameChange}
           size="small"
+          sx={{ width: "250px" }}
         />
       </div>
     </div>

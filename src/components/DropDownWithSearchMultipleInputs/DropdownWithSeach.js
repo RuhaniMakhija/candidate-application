@@ -10,7 +10,7 @@ import { addRoles, removeRoles } from '../../utils/rolesSlice';
 
 
 
-const DropdownWithSeach = ({items,inputName}) => {
+const DropdownWithSearch = ({items,inputName}) => {
 
       const dispatch=useDispatch()
       const rolesSelected=useSelector((store)=>store.roles.items);
@@ -98,4 +98,4 @@ const DropdownWithSeach = ({items,inputName}) => {
   )
 }
 
-export default DropdownWithSeach
+export default DropdownWithSearch
