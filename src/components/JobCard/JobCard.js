@@ -1,5 +1,6 @@
 import React from 'react';
 import "./jobCard.css"
+import { Avatar } from '@mui/material';
 
 const JobCard = ({job}) => {
     const limitedString = (str, limit) => {
@@ -41,7 +42,7 @@ const JobCard = ({job}) => {
             <h2 className='min-exp'>{job?.minExp} years</h2>
         </div>}
         <button className='easy-apply' onClick={redirectToLink}>⚡ Easy Apply</button>
-        <button className='refferal-ask'> Unlock referral asks</button>
+        <button className='refferal-ask'> <Avatar/>Unlock referral asks</button>
 
 
 

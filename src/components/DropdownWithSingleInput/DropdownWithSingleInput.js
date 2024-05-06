@@ -40,7 +40,7 @@ const DropdownWithSingleInput = ({items,inputName}) => {
       id="combo-box-demo"
       options={options}
       size="small"
-      sx={{ width: "150px" }} 
+      sx={{ width: "250px" }}
       renderInput={(params) => <TextField {...params} label={inputName} />}
       getOptionLabel={(option) => option.title}
       onChange={handleOptionChange}
