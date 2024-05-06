@@ -12,6 +12,7 @@ const JobListing = () => {
     const companyName = useSelector(state => state.companyName.companyName);
     const location = useSelector(state => state.locationName.locationName);
     const minExperience = useSelector(state => state.experience);
+    const minBasepay=useSelector(state => state.basepay);
     const roles = useSelector(state => state.roles.items.map(role => role.toLowerCase())); // Convert roles to lowercase
     const [offset,setOffset]=useState(0);
     const [showShimmer,setShowShimmer]=useState(false);
@@ -88,7 +89,17 @@ const JobListing = () => {
         return job.minExp >= minExperience;
     };
 
-    const filteredJobListings = jobListings.filter(job => filterByRoles(job) && filterByCompanyName(job) && filterByLocationName(job) && filterByMinExperience(job));
+    const filterByMinBasePay = (job) => {
+        if (minBasepay === null) {
+            return true; 
+        }
+        if (job.minJdSalary === null) {
+            return false; 
+        }
+        return job.minJdSalary >= minBasepay;
+    };
+
+    const filteredJobListings = jobListings.filter(job => filterByRoles(job) && filterByCompanyName(job) && filterByLocationName(job) && filterByMinExperience(job) && filterByMinBasePay(job));
 
 
    

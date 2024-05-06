@@ -4,13 +4,15 @@ import jobsReducer from "./jobListingSlice";
 import companyReducer from "./companySlice";
 import locationRedecer from "./locationSlice";
 import experienceReducer from "./experienceSlice";
+import basepayReducer from "./basepaySlice";
 const store=configureStore({
     reducer:{
         roles:rolesReducer,
         jobs:jobsReducer,
         companyName:companyReducer,
         locationName:locationRedecer,
-        experience:experienceReducer
+        experience:experienceReducer,
+        basepay:basepayReducer
     }
 })
 
